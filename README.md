@@ -58,7 +58,15 @@ console.log(notify)
 ```
 
 
-### Template Definition Categories
+### Template Definition Types
+
+Templates are at the core of Notify-IO. Here we will take a look at the three types of templates, specifically how they are defined and when what type is used. Templates types are distinguished based on the mount of arguments the template function takes. 
+
+The three types are 
+- Constant Template Definition (CTD)
+- Unary Template Definition (UTD)
+- Multidimensional Template Definition (MTD)
+
 **Note:** keys must be valid ISO 639-1 lang codes e.g. "en"
 
 Constant Template Definition (CTD)
