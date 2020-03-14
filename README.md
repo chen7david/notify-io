@@ -6,6 +6,9 @@ Notify-IO gives you an easy to use interface for defining and calling your own c
 #### 1. Geting Started
 The steps below will walk you through setting up a basic project to get started with **notify-io**
 
+**step 0:** NPM install notify-io
+```js $ npm i notify-io```
+
 **step 1:** Require in Notify and TemplateBuilder
 ```js 
 const { Notify, TemplateBuilder } = require('notify-io')
