@@ -1,6 +1,6 @@
 {
   "name": "notify-io",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Notify-IO gives you an easy to use interface for defining and calling your own custom notifications.",
   "main": "Notify.js",
   "repository": {
@@ -8,7 +8,11 @@
     "url": "git+https://github.com/chen7david/notify-io.git"
   },
   "keywords": [
-    "notifications"
+    "notifications",
+    "multi-language",
+    "template",
+    "error",
+    "error-handling"
   ],
   "author": "David M.Chen",
   "license": "MIT",

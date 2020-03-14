@@ -58,6 +58,13 @@ class Notify {
         return this.constructor.lang
     }
 
+    getNotification(){
+        return {
+            lang: this.lang,
+            messages:this.messages
+        }
+    }
+
     isLang(lang){
         return this.constructor.langs.includes(lang)
     }
