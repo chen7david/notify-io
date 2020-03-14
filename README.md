@@ -5,22 +5,22 @@ Notify-IO gives you an easy to use interface for defining and calling your own c
 ### Introduction
 
 #### 1. Geting Started
-1. Require in Notify and TemplateBuilder
+- Require in Notify and TemplateBuilder
 ```js 
 const { Notify, TemplateBuilder } = require('notify-io')
 ```
 
-2. Create new template-builder object
+- Create new template-builder object
 ```js 
 let templates = new TemplateBuilder() 
 ```
 
-3. Set Notify class configurations
+- Set Notify class configurations
 ```js 
 Notify.congif({ templates })
 ```
 
-4. Define templates with the load function
+- Define templates with the load function
 ```js 
 templates.load('welcome', { state: 'info'},{
     en: (noun) => `welcome back ${noun}`, 
@@ -29,7 +29,7 @@ templates.load('welcome', { state: 'info'},{
 ```
 
 
-5. Use Notify in your project
+- Use Notify in your project
 ```js
 let notify = new Notify()
     .loadMessage('welcome', 'some-username')
@@ -37,7 +37,7 @@ let notify = new Notify()
 console.log(notify)
 ```
 
-6. The output of step 5
+- The output of previouse step
 ```js 
 {
   lang: 'en',
@@ -56,7 +56,7 @@ console.log(notify)
 ### Template Definition Categories
 **Note:** keys must be valid ISO 639-1 lang codes e.g. "en"
 
-CAT 1: Constant Template Definition (CTD)
+Constant Template Definition (CTD)
 ```js 
 templates.load('already_registered', { state: 'info'},{
     en: () => `please try loggin in!`, 
@@ -64,7 +64,7 @@ templates.load('already_registered', { state: 'info'},{
 })
 ```
 
-CAT 2: Unary Template Definition (UTD)
+Unary Template Definition (UTD)
 ```js 
 templates.load('welcome', { state: 'info'},{
     en: (noun) => `welcome back ${noun}`, 
@@ -72,7 +72,7 @@ templates.load('welcome', { state: 'info'},{
 })
 ```
 
-CAT 3: Multidimensional Template Definition (MTD)
+Multidimensional Template Definition (MTD)
 ```js 
 templates.load('should_match', { key:'username', state: 'info'}, {
     en: (data) => `${data.noun1} and ${data.noun2} should match!`,
