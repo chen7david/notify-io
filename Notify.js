@@ -32,29 +32,40 @@ class Notify {
         return this
     }
 
-    template(name, data){
+    render(name, data){
         let template = this.templates()[name]
         if(!template)
             throw(`${name} template was not loaded, please load it first!`)
-        let message = template.messages[this.lang]
+        let { details, messages } = template
+        let message = messages[this.lang]
         if(!(message instanceof Function))
             throw(`${this.lang} template lang was not loaded, please load it first!`)
-        template.details.message = template.messages[this.lang](data)
-        if(this.key) template.details.key = this.key
-        this.key = null
-        return template.details
+        details = Object.assign({}, details, {message: message(data)})    
+        if(this.reset && this.reset.key) details.key = this.reset.key
+        if(this.reset && this.reset.state) details.state = this.reset.state
+        delete this.reset
+        return details
     }
 
-    setKey(key){
+    key(key){
         if(!isString(key))
             throw(`key has to be a valid instace of String`)
-        this.key = key
+        if(!this.reset) this.reset = {}
+        this.reset.key = key
         return this
     }
 
-    loadMessage(name, data){
+    state(state){
+        if(!isString(state))
+            throw(`state has to be a valid instace of String`)
+        if(!this.reset) this.reset = {}
+        this.reset.state = state
+        return this
+    }
+
+    message(name, data){
         if(!this.messages) this.messages = []
-        this.messages.push(this.template(name, data))
+        this.messages.push(this.render(name, data))
         return this
     }
 
@@ -67,7 +78,7 @@ class Notify {
         return this.constructor.lang
     }
 
-    getNotification(){
+    done(){
         return {
             lang: this.lang,
             messages:this.messages

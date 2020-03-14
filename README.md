@@ -37,7 +37,8 @@ templates.load('welcome', { state: 'info'},{
 **step 5:** Use Notify in your project
 ```js
 let notify = new Notify()
-    .loadMessage('welcome', 'some-username')
+    .message('welcome', 'some-username')
+    .done()
 
 console.log(notify)
 ```
