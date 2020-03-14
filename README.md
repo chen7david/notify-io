@@ -5,22 +5,22 @@ Notify-IO gives you an easy to use interface for defining and calling your own c
 ### Introduction
 
 #### 1. Geting Started
-- Require in Notify and TemplateBuilder
+**step 1:** Require in Notify and TemplateBuilder
 ```js 
 const { Notify, TemplateBuilder } = require('notify-io')
 ```
 
-- Create new template-builder object
+**step 2:** Create new template-builder object
 ```js 
 let templates = new TemplateBuilder() 
 ```
 
-- Set Notify class configurations
+**step 3:** Set Notify class configurations
 ```js 
 Notify.congif({ templates })
 ```
 
-- Define templates with the load function
+**step 4:** Define templates with the load function
 ```js 
 templates.load('welcome', { state: 'info'},{
     en: (noun) => `welcome back ${noun}`, 
@@ -28,8 +28,7 @@ templates.load('welcome', { state: 'info'},{
 })
 ```
 
-
-- Use Notify in your project
+**step 5:** Use Notify in your project
 ```js
 let notify = new Notify()
     .loadMessage('welcome', 'some-username')
@@ -37,7 +36,7 @@ let notify = new Notify()
 console.log(notify)
 ```
 
-- The output of previouse step
+**step 6:** The output of previouse step
 ```js 
 {
   lang: 'en',
