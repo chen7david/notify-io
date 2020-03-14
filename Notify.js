@@ -43,6 +43,11 @@ class Notify {
         return template.details
     }
 
+    setKey(key){
+        
+        this.key = key
+    }
+
     loadMessage(name, data){
         if(!this.messages) this.messages = []
         this.messages.push(this.template(name, data))
