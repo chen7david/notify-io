@@ -1,7 +1,8 @@
 # Notify-IO
 
-## Introduction
 Notify-IO gives you an easy to use interface for defining and calling your own custom notifications.
+
+## Introduction
 
 #### 1. Geting Started
 
