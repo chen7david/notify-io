@@ -36,7 +36,7 @@ let notify = new Notify()
 console.log(notify)
 ```
 
-**step 6:** The output of previouse step
+**step 6:** The output of step 5
 ```js 
 {
   lang: 'en',
