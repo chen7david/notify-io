@@ -1,5 +1,5 @@
 const { TemplateBuilder } = require('./TemplateBuilder')
-const { isArray } = require('funx-js')
+const { isArray, isString } = require('funx-js')
 
 class Notify {
 
@@ -40,12 +40,16 @@ class Notify {
         if(!(message instanceof Function))
             throw(`${this.lang} template lang was not loaded, please load it first!`)
         template.details.message = template.messages[this.lang](data)
+        if(this.key) template.details.key = this.key
+        this.key = null
         return template.details
     }
 
     setKey(key){
-        
+        if(!isString(key))
+            throw(`key has to be a valid instace of String`)
         this.key = key
+        return this
     }
 
     loadMessage(name, data){
