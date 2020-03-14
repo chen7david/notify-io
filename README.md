@@ -5,28 +5,40 @@ Notify-IO gives you an easy to use interface for defining and calling your own c
 ### Introduction
 
 #### 1. Geting Started
+1. Require in Notify and TemplateBuilder
+```js 
+const { Notify, TemplateBuilder } = require('notify-io')
+```
 
-```js
-const { Notify, TemplateBuilder } = require('notify-io') // 1. require in Notify and TemplateBuilder
+2. Create new template-builder object
+```js 
+let templates = new TemplateBuilder() 
+```
 
-let templates = new TemplateBuilder() // 2. create new template-builder object
+3. Set Notify class configurations
+```js 
+Notify.congif({ templates })
+```
 
-Notify.congif({ templates }) // 3. load tempates on Notify class
-
-// 4. Define your templates with the load function
+4. Define templates with the load function
+```js 
 templates.load('welcome', { state: 'info'},{
     en: (noun) => `welcome back ${noun}`, 
     zh: (noun) => `欢迎回来 ${noun}`,
 })
+```
 
-// 
+
+5. Use Notify in your project
+```js
 let notify = new Notify()
     .loadMessage('welcome', 'some-username')
 
 console.log(notify)
+```
 
-// Output
-
+6. The output of step 5
+```js 
 {
   lang: 'en',
   messages: [
@@ -41,31 +53,29 @@ console.log(notify)
 ```
 
 
+### Template Definition Categories
+**Note:** keys must be valid ISO 639-1 lang codes e.g. "en"
 
-
-```js
-
-// Note: keys must be valid ISO 639-1 lang codes e.g. "en"
-// Case: 1, Constant Template Definition (CTD)
+CAT 1: Constant Template Definition (CTD)
+```js 
 templates.load('already_registered', { state: 'info'},{
     en: () => `please try loggin in!`, 
     zh: () => `请登陆`,
 })
+```
 
-// Case: 2, Unary Template Definition (UTD)
+CAT 2: Unary Template Definition (UTD)
+```js 
 templates.load('welcome', { state: 'info'},{
     en: (noun) => `welcome back ${noun}`, 
     zh: (noun) => `欢迎回来 ${noun}`,
 })
+```
 
-// Case: 3, Multidimensional Template Definition (MTD)
+CAT 3: Multidimensional Template Definition (MTD)
+```js 
 templates.load('should_match', { key:'username', state: 'info'}, {
     en: (data) => `${data.noun1} and ${data.noun2} should match!`,
     zh: (data) => `${data.noun1} 和 ${data.noun2} 应该相同!`
 })
-
-// 
-let notify = new Notify()
-    .loadMessage('welcome', 'some-username')
-
 ```
