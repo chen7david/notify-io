@@ -11,42 +11,45 @@ The steps below will walk you through setting up a basic project to get started 
 $ npm i notify-io
 ```
 
-**step 1:** Require in Notify and TemplateBuilder
+**step 1:** Require in NotifyIO and SchemaBuilder
 ```js 
-const { Notify, TemplateBuilder } = require('notify-io')
+const { NotifyIO, SchemaBuilder } = require('notify-io')
 ```
 
-**step 2:** Create new template-builder object
+**step 2:** Create new SchemaBuilder object
 ```js 
-let templates = new TemplateBuilder() 
+let { SchemaBuilder } = require('notify-io')
+schema = new SchemaBuilder()
 ```
 
-**step 3:** Set Notify class configurations
+**step 3:** Define templates with the load function
 ```js 
-Notify.congif({ templates })
-```
-
-**step 4:** Define templates with the load function
-```js 
-templates.load('welcome', { state: 'info'},{
+schema.create('welcome', {
     en: (noun) => `welcome back ${noun}`, 
     zh: (noun) => `欢迎回来 ${noun}`,
 })
 ```
 
+**step 4:** Load Schema on Notify class
+```js 
+NotifyIO.loadSchema(JoiSchema)
+```
+
+
 **step 5:** Use Notify in your project
 ```js
-let notify = new Notify()
-    .message('welcome', 'some-username')
-    .done()
+let validation = new NotifyIO('validation')
+    .message('welcome', 'some-username', 'username')
 
-console.log(notify)
+
+console.log(validation)
 ```
 
 **step 6:** The output of step 5
 ```js 
 {
   lang: 'en',
+  state: 'validation',
   messages: [
     {
       key: 'username',
@@ -72,7 +75,7 @@ The three types are:
 
 Constant Template Definition (CTD)
 ```js 
-templates.load('already_registered', { state: 'info'},{
+schema.create('already_registered', {
     en: () => `please try loggin in!`, 
     zh: () => `请登陆`,
 })
@@ -80,7 +83,7 @@ templates.load('already_registered', { state: 'info'},{
 
 Unary Template Definition (UTD)
 ```js 
-templates.load('welcome', { state: 'info'},{
+schema.create('welcome', {
     en: (noun) => `welcome back ${noun}`, 
     zh: (noun) => `欢迎回来 ${noun}`,
 })
@@ -88,7 +91,7 @@ templates.load('welcome', { state: 'info'},{
 
 Multidimensional Template Definition (MTD)
 ```js 
-templates.load('should_match', { key:'username', state: 'info'}, {
+schema.create('should_match', {
     en: (data) => `${data.noun1} and ${data.noun2} should match!`,
     zh: (data) => `${data.noun1} 和 ${data.noun2} 应该相同!`
 })

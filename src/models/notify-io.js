@@ -10,8 +10,8 @@ class NotifyIO {
     }
 
     static loadSchema(schema){
-        if(!(schema instanceof SchemaBuilder))
-            throw(`schema should be an instance of SchemaBuilder`)
+        // if(!(schema instanceof SchemaBuilder))
+        //     throw(`schema should be an instance of SchemaBuilder`)
         this.schemas = schema.export()
         return this
     }
