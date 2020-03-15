@@ -18,7 +18,7 @@ const { NotifyIO, SchemaBuilder } = require('notify-io')
 
 **step 2:** Create new SchemaBuilder object
 ```js 
-let { SchemaBuilder } = require('notify-io')
+const { SchemaBuilder } = require('notify-io')
 schema = new SchemaBuilder()
 ```
 
