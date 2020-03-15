@@ -1,4 +1,4 @@
-const { isObject } = require('funx-js')
+const { isObject, dd } = require('funx-js')
 
 class NotifyIO {
 
