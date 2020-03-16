@@ -99,7 +99,7 @@ schema.create('should_match', {
 ## API Documentation
 
 ### .message()
-The message method has three parameters. The first is required and the other two are optional. <code>NotifyIOInstance.message(template-name, template-data, message-key)</code>. The message method renders handles template renderign for you.
+The message method has three parameters. The first is required and the other two are optional. <code>NotifyIOInstance.message(template-name, template-data, message-key)</code>. The message method renders handles template rendering for you.
 
 ```js
 const notify = new NotifyIO('validation')
@@ -108,7 +108,7 @@ notify
 ```
 
 ### .load()
-The message method has three parameters. The first is required and the other two are optional. <code>NotifyIOInstance.load(template-name, template-data, message-key)</code>. The load method only loads your templates to a queue. When you are done loading messages you can call the render method which will render all messages that are in the queue.
+The load method has three parameters. The first is required and the other two are optional. <code>NotifyIOInstance.load(template-name, template-data, message-key)</code>. The load method only loads your templates to a queue. When you are done loading messages you can call the render method which will render all templates in the queue.
 
 ```js
 const notify = new NotifyIO('validation')
@@ -119,7 +119,7 @@ notify
 ```
 
 ### .render() 
-The render method takes no parameters. It renders all message in the queue.
+The render method takes no parameters. It renders all templates in the queue.
 
 ```js
 const notify = new NotifyIO('validation')
