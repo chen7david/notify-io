@@ -32,10 +32,9 @@ class NotifyIO {
         let lang = this.lang
         for(let config of this.queue){
             const { template, data, key } = config
-            messages.push({
-                message: template[lang](data),
-                key
-            })
+            const item = { message: template[lang](data) }
+            if(key) item.key = key
+            messages.push(item)
         }
         delete this.queue
         this.messages = messages
