@@ -99,7 +99,7 @@ schema.create('should_match', {
 ## API Documentation
 
 ### .message()
-The message method has three parameters. The first is required and the other two are optional. <code>NotifyIOInstance.message(template-name, template-data, message-key). The message method renders handles template renderign for you.
+The message method has three parameters. The first is required and the other two are optional. <code>NotifyIOInstance.message(template-name, template-data, message-key)</code>. The message method renders handles template renderign for you.
 
 ```js
 const notify = new NotifyIO('validation')
