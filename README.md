@@ -107,7 +107,7 @@ notify
     .message('any.required', 'password', 'password')
 ```
 
-- ** .load() **
+### ** .load() **
 The message method has three parameters. The first is required and the other two are optional. <code>NotifyIOInstance.message(template-name, template-data, message-key). The load method only loads your templates to a queue. When you are done loading messages you can call the render method which will render all messages that are in the queue.
 
 ```js
