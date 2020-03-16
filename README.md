@@ -18,8 +18,7 @@ const { NotifyIO, SchemaBuilder } = require('notify-io')
 
 **step 2:** Create new SchemaBuilder object
 ```js 
-const { SchemaBuilder } = require('notify-io')
-schema = new SchemaBuilder()
+const schema = new SchemaBuilder()
 ```
 
 **step 3:** Define templates with the load function
@@ -32,13 +31,13 @@ schema.create('welcome', {
 
 **step 4:** Load Schema on Notify class
 ```js 
-NotifyIO.loadSchema(JoiSchema)
+NotifyIO.loadSchema(schema)
 ```
 
 
 **step 5:** Use Notify in your project
 ```js
-let validation = new NotifyIO('validation')
+const validation = new NotifyIO('validation')
     .message('welcome', 'some-username', 'username')
 
 
