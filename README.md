@@ -11,9 +11,9 @@ The steps below will walk you through setting up a basic project to get started 
 $ npm i notify-io
 ```
 
-**step 1:** Require in NotifyIO and SchemaBuilder
+**step 1:** Require in Notify and SchemaBuilder
 ```js 
-const { NotifyIO, SchemaBuilder } = require('notify-io')
+const { Notify, SchemaBuilder } = require('notify-io')
 ```
 
 **step 2:** Create new SchemaBuilder object
@@ -21,7 +21,7 @@ const { NotifyIO, SchemaBuilder } = require('notify-io')
 const schema = new SchemaBuilder()
 ```
 
-**step 3:** Define templates with the load function
+**step 3:** Define Schema with the create function
 ```js 
 schema.create('welcome', {
     en: (noun) => `welcome back ${noun}`, 
@@ -29,22 +29,17 @@ schema.create('welcome', {
 })
 ```
 
-**step 4:** Load Schema on Notify class
-```js 
-NotifyIO.loadSchema(schema)
-```
-
-
-**step 5:** Use Notify in your project
+**step 4:** Use Notify in your project
 ```js
-const validation = new NotifyIO('validation')
-    .message('welcome', 'some-username', 'username')
+const notify = new Notify(schema)
+notify.stateTo('info') // info is the default state, so only call stateTo() if you need another state.
 
+const msg = notify.message('welcome', 'some-username', 'username')
 
-console.log(validation)
+console.log(msg)
 ```
 
-**step 6:** The output of step 5
+**step 5:** The output of step 4
 ```js 
 {
   lang: 'en',
@@ -61,9 +56,9 @@ console.log(validation)
 ```
 
 
-### Template Definition Types
+### Schema Definition Types
 
-Templates are at the core of Notify-IO. Here we will take a look at the three types of templates, specifically how they are defined and when what type is used. Templates types are distinguished based on the mount of arguments the template function takes. 
+Schemas are at the core of Notify-IO. Here we will take a look at the three types of Schemas, specifically how they are defined and when what type is used. Schema types are distinguished based on the mount of arguments the template function takes. 
 
 The three types are: 
 - Constant Template Definition (CTD)
@@ -99,19 +94,19 @@ schema.create('should_match', {
 ## API Documentation
 
 ### .message()
-The message method has three parameters. The first is required and the other two are optional. <code>NotifyIOInstance.message(template-name, template-data, message-key)</code>. The message method renders handles template rendering for you.
+The message method has three parameters. The first is required and the other two are optional. <code>Notify-IO-Instance.message(schema-name, schema-data, message-key)</code>. The message method renders handles schema rendering for you.
 
 ```js
-const notify = new NotifyIO('validation')
+const notify = new Notify('validation')
 notify
     .message('any.required', 'password', 'password')
 ```
 
 ### .load()
-The load method has three parameters. The first is required and the other two are optional. <code>NotifyIOInstance.load(template-name, template-data, message-key)</code>. The load method only loads your templates to a queue. When you are done loading messages you can call the render method which will render all templates in the queue.
+The load method has three parameters. The first is required and the other two are optional. <code>Notify-IO-Instance.load(schema-name, schema-data, message-key)</code>. The load method only loads your Schema to a queue. When you are done loading messages you can call the render method which will render all Schema in the queue.
 
 ```js
-const notify = new NotifyIO('validation')
+const notify = new Notify('validation')
 notify
     .load('any.required', 'password', 'password')
     .load('string.empty', 'password', 'password')
@@ -119,10 +114,10 @@ notify
 ```
 
 ### .render() 
-The render method takes no parameters. It renders all templates in the queue.
+The render method takes no parameters. It renders all Schema in the queue.
 
 ```js
-const notify = new NotifyIO('validation')
+const notify = new Notify('validation')
 notify
     .load('any.required', 'password', 'password')
     .load('string.empty', 'password', 'password')
