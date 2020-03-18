@@ -101,7 +101,7 @@ class Notify {
         return this
     }
 
-    originalTo(state){
+    originalTo(original){
         this.original = original
         return this
     }

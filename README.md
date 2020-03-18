@@ -58,16 +58,16 @@ console.log(msg)
 
 ### Schema Definition Types
 
-Schemas are at the core of Notify-IO. Here we will take a look at the three types of Schemas, specifically how they are defined and when what type is used. Schema types are distinguished based on the mount of arguments the template function takes. 
+Schemas are at the core of Notify-IO. Here we will take a look at the three types of Schemas, specifically how they are defined and when what type is used. Schema types are distinguished based on the mount of arguments the schema function takes. 
 
 The three types are: 
-- Constant Template Definition (CTD)
-- Unary Template Definition (UTD)
-- Multidimensional Template Definition (MTD)
+- Constant Schema Definition (CSD)
+- Unary Schema Definition (USD)
+- Multidimensional Schema Definition (MSD)
 
 **Note:** keys must be valid ISO 639-1 lang codes e.g. "en"
 
-Constant Template Definition (CTD)
+Constant Schema Definition (CSD)
 ```js 
 schema.create('already_registered', {
     en: () => `please try loggin in!`, 
@@ -75,7 +75,7 @@ schema.create('already_registered', {
 })
 ```
 
-Unary Template Definition (UTD)
+Unary Schema Definition (USD)
 ```js 
 schema.create('welcome', {
     en: (noun) => `welcome back ${noun}`, 
@@ -83,7 +83,7 @@ schema.create('welcome', {
 })
 ```
 
-Multidimensional Template Definition (MTD)
+Multidimensional Schema Definition (MSD)
 ```js 
 schema.create('should_match', {
     en: (data) => `${data.noun1} and ${data.noun2} should match!`,
