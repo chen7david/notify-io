@@ -50,21 +50,13 @@ class Notify {
     constructor(schema){
         this.lang = 'en'
         this.state = 'info'
-        this._schema = null
         this.loadSchema(schema)
-    }
-
-    static loadSchema(schema){
-        if(!(schema instanceof SchemaBuilder))
-            throw(`schema should be an instance of SchemaBuilder`)
-        this._schema = schema.export()
-        return this
     }
 
     loadSchema(schema){
         if(!(schema instanceof SchemaBuilder))
             throw(`schema should be an instance of SchemaBuilder`)
-        this._schema = schema.export()
+        this.constructor.schema = schema.export()
         return this
     }
 
@@ -89,7 +81,6 @@ class Notify {
             messages.push(item)
         }
         delete this.queue
-        delete this._schema
         this.messages = messages
         return this
     }
@@ -111,11 +102,11 @@ class Notify {
     }
 
     schema(){
-        return this._schema
+        return this.constructor.schema
     }
 
     template(name){
-        return this._schema[name]
+        return this.schema()[name]
     }
 }
 
