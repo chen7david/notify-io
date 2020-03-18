@@ -101,6 +101,11 @@ class Notify {
         return this
     }
 
+    originalTo(state){
+        this.original = original
+        return this
+    }
+
     schema(){
         return this.constructor.schema
     }
